@@ -8,6 +8,7 @@ export default class App extends React.Component {
             dataSource: null,
         }
     }
+    
     componentDidMount () {
         return fetch('https://facebook.github.io/react-native/movies.json')
             .then ( (response) => response.json() )
