@@ -20,7 +20,7 @@ export default class MovieDetail extends PureComponent {
 
   componentWillMount(){
     const { id: movieId } = this.props;
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=b573d051ec65413c949e68169923f7ff&append_to_response=videos`)
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
       .then(response => response.json())
       .then(movie => this.setState({
         movie,
@@ -52,7 +52,7 @@ export default class MovieDetail extends PureComponent {
       >
         <TouchableOpacity
           onPress={goBack}>
-          <Ionicons name="ios-arrow-back-outline" size={50} color="white" style={styles.icon} />
+          <Ionicons name="ios-arrow-dropleft-circle" size={50} color="white" style={styles.icon} />
         </TouchableOpacity>
       </ImageBackground>
     )

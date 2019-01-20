@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
   menuItem: {
     width: 100, 
     height: 100, 
-    backgroundColor: '#a30000',
+    backgroundColor: 'black',
     padding: 8,
     flexDirection: 'column',
     justifyContent: 'space-between', 
     borderRadius: 5,
+    borderColor: 'red',
   },
   menuSeparator: {
     width: 10,
