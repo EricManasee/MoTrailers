@@ -28,15 +28,6 @@ public class AirMapUrlTile extends AirMapFeature {
           .replace("{y}", Integer.toString(y))
           .replace("{z}", Integer.toString(zoom));
       URL url = null;
-
-      if(AirMapUrlTile.this.maximumZ > 0 && zoom > maximumZ) {
-        return url;
-      }
-
-      if(AirMapUrlTile.this.minimumZ > 0 && zoom < minimumZ) {
-        return url;
-      }
-
       try {
         url = new URL(s);
       } catch (MalformedURLException e) {
@@ -56,8 +47,6 @@ public class AirMapUrlTile extends AirMapFeature {
 
   private String urlTemplate;
   private float zIndex;
-  private float maximumZ;
-  private float minimumZ;
 
   public AirMapUrlTile(Context context) {
     super(context);
@@ -77,20 +66,6 @@ public class AirMapUrlTile extends AirMapFeature {
     this.zIndex = zIndex;
     if (tileOverlay != null) {
       tileOverlay.setZIndex(zIndex);
-    }
-  }
-
-  public void setMaximumZ(float maximumZ) {
-    this.maximumZ = maximumZ;
-    if (tileOverlay != null) {
-      tileOverlay.clearTileCache();
-    }
-  }
-
-  public void setMinimumZ(float minimumZ) {
-    this.minimumZ = minimumZ;
-    if (tileOverlay != null) {
-      tileOverlay.clearTileCache();
     }
   }
 

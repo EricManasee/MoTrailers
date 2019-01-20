@@ -45,14 +45,4 @@ public class AirMapUrlTileManager extends ViewGroupManager<AirMapUrlTile> {
     view.setZIndex(zIndex);
   }
 
-  @ReactProp(name = "minimumZ", defaultFloat = 0.0f)
-  public void setMinimumZ(AirMapUrlTile view, float minimumZ) {
-    view.setMinimumZ(minimumZ);
-  }
-
-  @ReactProp(name = "maximumZ", defaultFloat = 100.0f)
-  public void setMaximumZ(AirMapUrlTile view, float maximumZ) {
-    view.setMaximumZ(maximumZ);
-  }
-
 }

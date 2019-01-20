@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  ColorPropType,
   StyleSheet,
   Platform,
   NativeModules,
@@ -63,7 +62,7 @@ const propTypes = {
    * If no custom marker view or custom image is provided, the platform default pin will be used,
    * which can be customized by this color. Ignored if a custom marker is being used.
    */
-  pinColor: ColorPropType,
+  pinColor: PropTypes.string,
 
   /**
    * The coordinate for the marker.
@@ -172,6 +171,8 @@ const propTypes = {
 
   /**
    * Sets whether this marker should track view changes true.
+   *
+   * @platform ios
    */
 
   tracksViewChanges: PropTypes.bool,
@@ -260,10 +261,6 @@ class MapMarker extends React.Component {
 
   animateMarkerToCoordinate(coordinate, duration) {
     this._runCommand('animateMarkerToCoordinate', [coordinate, duration || 500]);
-  }
-
-  redraw() {
-    this._runCommand('redraw', []);
   }
 
   _getHandle() {

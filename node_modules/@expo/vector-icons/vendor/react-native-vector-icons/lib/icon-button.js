@@ -26,47 +26,6 @@ const styles = StyleSheet.create({
 
 const IOS7_BLUE = '#007AFF';
 
-const TEXT_PROP_NAMES = [
-  'ellipsizeMode',
-  'numberOfLines',
-  'textBreakStrategy',
-  'selectable',
-  'suppressHighlighting',
-  'allowFontScaling',
-  'adjustsFontSizeToFit',
-  'minimumFontScale',
-];
-
-const TOUCHABLE_PROP_NAMES = [
-  'accessible',
-  'accessibilityLabel',
-  'accessibilityHint',
-  'accessibilityComponentType',
-  'accessibilityRole',
-  'accessibilityStates',
-  'accessibilityTraits',
-  'onFocus',
-  'onBlur',
-  'disabled',
-  'onPress',
-  'onPressIn',
-  'onPressOut',
-  'onLayout',
-  'onLongPress',
-  'nativeID',
-  'testID',
-  'delayPressIn',
-  'delayPressOut',
-  'delayLongPress',
-  'activeOpacity',
-  'underlayColor',
-  'selectionColor',
-  'onShowUnderlay',
-  'onHideUnderlay',
-  'hasTVPreferredFocus',
-  'tvParallaxProperties',
-];
-
 export default function createIconButtonComponent(Icon) {
   return class IconButton extends PureComponent {
     static propTypes = {
@@ -94,13 +53,16 @@ export default function createIconButtonComponent(Icon) {
 
       const iconProps = pick(
         restProps,
-        TEXT_PROP_NAMES,
+        Object.keys(Text.propTypes),
         'style',
         'name',
         'size',
         'color'
       );
-      const touchableProps = pick(restProps, TOUCHABLE_PROP_NAMES);
+      const touchableProps = pick(
+        restProps,
+        Object.keys(TouchableHighlight.propTypes)
+      );
       const props = omit(
         restProps,
         Object.keys(iconProps),

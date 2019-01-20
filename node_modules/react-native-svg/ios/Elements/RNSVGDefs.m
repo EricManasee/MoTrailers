@@ -19,9 +19,7 @@
 - (void)parseReference
 {
     [self traverseSubviews:^(RNSVGNode *node) {
-        if ([node isKindOfClass:[RNSVGNode class]]) {
-            [node parseReference];
-        }
+        [node parseReference];
         return YES;
     }];
 }

@@ -14,8 +14,7 @@ function extractGlyphMapFromCss(files, selectorPattern) {
     if (ruleParts[2]) {
       // Hex value in CSS
       return parseInt(ruleParts[2], 16);
-    }
-    if (ruleParts[3].length > 1) {
+    } else if (ruleParts[3].length > 1) {
       // String value in CSS that we'll keep as a string because it's not a single character
       return ruleParts[3];
     }
