@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { 
+import {
   TouchableOpacity,
   View,
   Text,
@@ -9,16 +9,18 @@ import {
   ScrollView,
   WebView,
 } from 'react-native';
-import MovieMock  from '../mock/MovieDetail.json';
+import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
 import { Video } from 'expo';
+import MovieFooter from '../components/Movie/MovieFooter';
+
 
 export default class MovieDetail extends PureComponent {
   state = {
     movie: null,
   }
 
-  componentWillMount(){
+  componentWillMount() {
     const { id: movieId } = this.props;
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
       .then(response => response.json())
@@ -27,14 +29,14 @@ export default class MovieDetail extends PureComponent {
       }));
   }
 
-  renderYoutubeTrailer(){
+  renderYoutubeTrailer() {
     const { videos } = this.state.movie;
     return videos && videos.results.length > 0 && videos.results[0].site === "YouTube"
       ? (
         <WebView
           style={styles.videoPlayer}
           javaScriptEnabled={true}
-          source={{uri: `https://www.youtube.com/embed/${videos.results[0].key}?rel=0&autoplay=0&showinfo=0&controls=0`}}
+          source={{ uri: `https://www.youtube.com/embed/${videos.results[0].key}?rel=0&autoplay=0&showinfo=0&controls=0` }}
         />
       ) : null
   }
@@ -61,7 +63,7 @@ export default class MovieDetail extends PureComponent {
   renderMovie() {
     const {
       title,
-      overview,
+      overview, // adding movie footer, still not appearing
     } = this.state.movie;
 
     return (
@@ -69,6 +71,7 @@ export default class MovieDetail extends PureComponent {
         {this.renderHeader()}
         <View style={styles.movieContentWrapper}>
           <Text style={styles.movieContentTitle}>{title}</Text>
+          <MovieFooter voteAverate={2017} releaseYear={'date'} />
           <Text
             textBreakStrategy='highQuality'
             style={styles.movieContent}>
@@ -101,26 +104,35 @@ MovieDetail.defaultProps = {
 const styles = StyleSheet.create({
   movieContent: {
     textAlign: 'justify',
+    color: '#F1FFF4',
+    paddingTop: 10,
+    paddingBottom: 15,
   },
-  movieContentWrapper: { padding: 15 },
+  movieContentWrapper: {
+    padding: 15
+  },
   movieContentTitle: {
     fontSize: 30,
     textAlign: 'center',
+    color: '#F1FFF4',
   },
   videoPlayer: {
     flex: 1,
-    height: 200
+    height: 220
   },
   movieView: {
-    flex:1,
-    backgroundColor: '#F1FFF4',
-    marginTop: 50,
+    flex: 1,
+    backgroundColor: 'black',
+    marginTop: 80,
     flexDirection: 'column',
   },
   movieImage: {
-    height: 200,
+    height: 260,
     flex: 1,
     paddingLeft: 15,
     paddingTop: 10,
+  },
+  MovieFooter: {
+    color: 'blue'
   }
 });

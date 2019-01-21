@@ -1,7 +1,8 @@
-import apiKey  from './apiKey';
-import { MediaList } from '../containers'
-const menuItens = [
-  {
+import apiKey from './apiKey';
+import {
+  MediaList
+} from '../containers'
+const menuItens = [{
     title: "Now Playing",
     path: "now_playing",
     tmdbUrl: `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
@@ -33,6 +34,12 @@ const menuItens = [
   },
   {
     title: "Tv Top Rated",
+    path: "dasas",
+    tmdbUrl: `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`,
+    icon: require('../assets/icons/rate.png')
+  },
+  {
+    title: "Search Trailer",
     path: "dasas",
     tmdbUrl: `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`,
     icon: require('../assets/icons/rate.png')
