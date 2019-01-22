@@ -7,7 +7,7 @@ import { MediaList } from './containers';
 
 
 export default class App extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props)
   }
 
@@ -18,11 +18,11 @@ export default class App extends React.Component {
     selectMediaItem: menuItens[0],
   };
 
-  getMediaList() {
-    const { path, title, tmdbUrl } = this.state.selectMediaItem;
+  getMediaList(){
+    const {path, title, tmdbUrl} = this.state.selectMediaItem;
     return (tmdbUrl && title) ? (
       <MediaList title={title} key={title} tmdbUrl={tmdbUrl} goToDetail={this.goToDetail} />
-    )
+    ) 
       : null;
   }
 
@@ -40,14 +40,14 @@ export default class App extends React.Component {
         <Menu itens={menuItens} onPress={(item) => {
           console.log('selecting', item)
           this.setState({ selectMediaItem: item })
-        }} />
+        }}/>
         {this.getMediaList()}
         <Modal
           animationType="slide"
           transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => this.setState({ modalVisible: false })}>
-          <MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
+          <MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })}/>
         </Modal>
       </View>
     );

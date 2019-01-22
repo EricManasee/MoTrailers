@@ -52,10 +52,12 @@ export default class MovieDetail extends PureComponent {
         }}
         style={styles.movieImage}
       >
+      <MovieFooter voteAverate={2017} releaseYear={'date'} />
         <TouchableOpacity
           onPress={goBack}>
           <Ionicons name="ios-arrow-dropleft-circle" size={50} color="white" style={styles.icon} />
         </TouchableOpacity>
+        
       </ImageBackground>
     )
   }
@@ -71,7 +73,7 @@ export default class MovieDetail extends PureComponent {
         {this.renderHeader()}
         <View style={styles.movieContentWrapper}>
           <Text style={styles.movieContentTitle}>{title}</Text>
-          <MovieFooter voteAverate={2017} releaseYear={'date'} />
+          {/* <MovieFooter voteAverate={2017} releaseYear={'date'} /> */}
           <Text
             textBreakStrategy='highQuality'
             style={styles.movieContent}>
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
   },
   videoPlayer: {
     flex: 1,
-    height: 220
+    height: 210
   },
   movieView: {
     flex: 1,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   movieImage: {
-    height: 260,
+    height: 240,
     flex: 1,
     paddingLeft: 15,
     paddingTop: 10,
