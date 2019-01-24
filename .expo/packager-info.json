@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 9151,
+  "packagerPort": 19004,
+  "packagerPid": 50699,
   "expoServerNgrokUrl": "https://g2-4ij.anonymous.movie-trailers.exp.direct",
   "packagerNgrokUrl": "https://packager.g2-4ij.anonymous.movie-trailers.exp.direct",
-  "ngrokPid": 9170
+  "ngrokPid": 50713
 }
