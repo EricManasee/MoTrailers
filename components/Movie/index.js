@@ -8,7 +8,7 @@ const { width, height } = Dimensions.get('window')
 const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(80)
-const movieHeight = getHeightSizeByPercentage(60)
+const movieHeight = getHeightSizeByPercentage(80)
 
 
 export default class Movie extends PureComponent {
@@ -55,13 +55,18 @@ Movie.defaultProps = {
 
 const styles = StyleSheet.create({
   movie: {
-    width: 200,
-    height: 200,
+    width: 364,
+    height: 364,
     display: 'flex',
   },
   poster: {
-    width: 200,
-    height: 200,
+    // marginRight: 20,
+    width: 360,
+    height: 360,
     flexDirection: 'row',
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 8,
+
   },
 });

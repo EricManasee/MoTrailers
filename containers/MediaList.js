@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View, FlatList, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Dimensions, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { Movie } from '../components';
+import People from '../components/People';
 import uuidv1 from 'uuid/v1';
 
 const { width, height } = Dimensions.get('window')
@@ -9,7 +10,7 @@ const { width, height } = Dimensions.get('window')
 const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(80)
-const movieHeight = getHeightSizeByPercentage(60)
+const movieHeight = getHeightSizeByPercentage(82)
 
 class MediaList extends Component {
   state = {
@@ -42,28 +43,34 @@ class MediaList extends Component {
   }
 
   getItemLayout(data, index) {
-    return {length: (movieWidth + 10), offset: (movieWidth + 10) * index, index}
+    return {
+      length: (movieWidth + 10), 
+      offset: (movieWidth + 10) * index, 
+      index
+    }
   }
   render () {
     const { title } = this.props;
     return (
       <Fragment>
+        
+        <View style={styles.listWrapper}>
+        {/* <People style={styles.People}/> */}
         <View style={styles.titleWrapper}>
             <Text style={styles.title}> { title }
             </Text>
         </View>
-        <View style={styles.listWrapper}>
           <FlatList
             keyExtractor={(item) => `${item.key}`}
             data={this.state.results}
             ItemSeparatorComponent={() => <View style={styles.viewSeparator}/>}
             renderItem={this.renderMovie}
-            horizontal
-            showsHorizontalScrollIndicator={false}
+            vertical
+            showsVerticalScrollIndicator={false} 
             onEndReached={() => this.fetcthItems(this.state.page + 1)}
             onEndReachedThreshold={0.5}
-            initialNumToRender={10}
-            windowSize={15}
+            initialNumToRender={60}
+            windowSize={21}
             getItemLayout={this.getItemLayout}
           />
         </View>
@@ -81,19 +88,24 @@ MediaList.propTypes = {
 export default MediaList;
 
 const styles = StyleSheet.create({
-  viewSeparator: { width: 10 },
+  viewSeparator: { 
+    width: 10,
+  height: 10, },
   title: {
-    fontSize: 30,
+    fontSize: 24,
+    fontWeight: '700',
     width: 200,
     color: 'white',
     textAlign: 'center',
   },
   titleWrapper: {
-    height: 100,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
-    paddingBottom: 20
+    paddingTop: 0,
+    paddingBottom: 0,
   },
-  listWrapper: { height: movieHeight }
+  listWrapper: { 
+    height: movieHeight,
+  },
 })

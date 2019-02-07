@@ -69,7 +69,9 @@ export default class MovieDetail extends PureComponent {
     } = this.state.movie;
 
     return (
-      <ScrollView style={styles.movieView}>
+      <ScrollView style={styles.movieView}
+      // vertical={true}
+      >  
         {this.renderHeader()}
         <View style={styles.movieContentWrapper}>
           <Text style={styles.movieContentTitle}>{title}</Text>
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
     padding: 15
   },
   movieContentTitle: {
-    fontSize: 30,
+    fontSize: 24,
     textAlign: 'center',
     color: '#F1FFF4',
   },

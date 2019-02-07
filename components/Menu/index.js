@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between', 
     borderRadius: 5,
-    borderColor: 'red',
   },
   menuSeparator: {
     width: 10,
@@ -71,8 +70,8 @@ const styles = StyleSheet.create({
   menuView: {
     height: 100,
     position: 'absolute',
-    bottom: 20,
-    left: 10
+    bottom: 0,
+    left: 0
   }
 })
 export default Menu;
