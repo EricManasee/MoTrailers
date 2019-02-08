@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 0,
-    width: 250,
+    width: 360,
     alignContent: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
     paddingBottom: 10,
+    backgroundColor: 'blue',
   },
   footerItem: {
     flexDirection: 'row',
