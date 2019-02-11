@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     paddingBottom: 10,
-    backgroundColor: 'blue',
+    backgroundColor: '#eb8900',
   },
   footerItem: {
     flexDirection: 'row',

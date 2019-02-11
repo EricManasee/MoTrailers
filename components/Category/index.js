@@ -9,14 +9,16 @@ import {
 class Category extends Component {
     render() {
         return (
-            <View style={{ height: 200, width: 152, marginLeft: 20, borderWidth: 0.5, }}>
-                <View style={{ flex: 1, borderRadius: 5 }}>
+            <View style={{ }}>
+                <View style={{ flex: 1,width: 150, height: 150, marginLeft: 20,borderRadius: 150/2}}>
                     <Image source={this.props.imageUri}
                         style={{
                             flex: 1,
                             width: 150,
-                            height: 190,
-                            resizeMode: 'cover'
+                            height: 150,
+                            
+                            resizeMode: 'cover',
+                            borderRadius: 150/2,
                         }}
                     />
                     {/* <Text style={{color: 'white'}}
@@ -35,7 +37,9 @@ export default Category;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'center'
+        margin: 5,
+        // paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0
     }
 });

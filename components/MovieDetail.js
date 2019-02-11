@@ -12,6 +12,7 @@ import {
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
 import { Video } from 'expo';
+import People from './People';
 import MovieFooter from '../components/Movie/MovieFooter';
 
 
@@ -52,12 +53,21 @@ export default class MovieDetail extends PureComponent {
         }}
         style={styles.movieImage}
       >
-      <MovieFooter voteAverate={2017} releaseYear={'date'} />
+      {/* <MovieFooter 
+      voteAverate={2017} 
+      releaseYear={'date'} 
+      style={{
+        width: 1000,
+        backgroundColor: '#eb8900'
+      }} */}
+      
+      />
+
         <TouchableOpacity
           onPress={goBack}>
-          <Ionicons name="ios-arrow-dropleft-circle" size={50} color="white" style={styles.icon} />
+          <Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
         </TouchableOpacity>
-        
+       
       </ImageBackground>
     )
   }
@@ -71,9 +81,11 @@ export default class MovieDetail extends PureComponent {
     return (
       <ScrollView style={styles.movieView}
       // vertical={true}
+      
       >  
         {this.renderHeader()}
         <View style={styles.movieContentWrapper}>
+        <People/>
           <Text style={styles.movieContentTitle}>{title}</Text>
           {/* <MovieFooter voteAverate={2017} releaseYear={'date'} /> */}
           <Text
