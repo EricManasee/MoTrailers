@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
 	overlayContainer: {
 		flex: 1,
 		paddingTop: Constants.statusBarHeight,
-		backgroundColor: 'rgba(0, 0, 0, 0.73)',
+		backgroundColor: '#000000',
+		// backgroundColor: 'rgba(0, 0, 0, 0.73)',
 	},
 });

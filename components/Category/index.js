@@ -9,23 +9,23 @@ import {
 class Category extends Component {
     render() {
         return (
-            <View style={{ }}>
-                <View style={{ flex: 1,width: 150, height: 150, marginLeft: 20,borderRadius: 150/2}}>
+            <View style={styles.container}>
+                <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#eb8900', justifyContent: 'center' }}>
                     <Image source={this.props.imageUri}
                         style={{
-                            flex: 1,
-                            width: 150,
-                            height: 150,
-                            
+                            // flex: 1,
+                            left: 2,
+                            width: 80,
+                            height: 80,
                             resizeMode: 'cover',
-                            borderRadius: 150/2,
+                            borderRadius: 40,
+                            justifyContent: 'center',
+                            
                         }}
                     />
-                    {/* <Text style={{color: 'white'}}
-                    >{this.props.name}</Text> */}
                 </View>
                 <View style={{ paddingBottom: 5, paddingTop: 5 }}>
-                    <Text style={{ color: 'white', textAlign: 'center' }}
+                    <Text style={{ color: '#ffffff', textAlign: 'center' }}
                     >{this.props.name}</Text>
                 </View>
             </View>
@@ -40,6 +40,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 5,
-        // paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0
     }
 });

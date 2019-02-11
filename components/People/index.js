@@ -33,18 +33,18 @@ export default class People extends PureComponent {
                     <ScrollView
                         scrollEventThrottle={16}
                     >
-                        <View style={{ flex: 1, position: 'relative', top: 20 , paddingTop: 10}}>
+                        <View style={{ flex: 1, position: 'relative', top: 0 , paddingTop: 0}}>
                             <Text style={{ 
                                 fontSize: 24, 
-                                fontWeight: '700', 
+                                fontWeight: '400', 
                                 paddingHorizontal: 20, 
                                 color: 'white', 
                                 textAlign: 'center'
                                 }}>
-                                Movie Stars.
+                                Movie casts.
                             </Text>
 
-                            <View style={{ height: 160, marginTop: 20 }}>
+                            <View style={{ height: 120, marginTop: 10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}

@@ -2,12 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import MediaList from '../../components'
 
 const iconAndTextColor = '#ededed';
 
-const MovieFooter = ({ voteAverate, releaseYear }) => {
+const MovieFooter = ({ voteAverate, releaseYear, title }) => {
   return (
     <View style={styles.footer}>
+      <View style={styles.footerItem}>
+        <Ionicons name="md-star" size={32} color={iconAndTextColor} style={styles.icon} />
+        <Text style={styles.text}>MediaList</Text>
+      </View>
       <View style={styles.footerItem}>
         <Ionicons name="md-star" size={32} color={iconAndTextColor} style={styles.icon} />
         <Text style={styles.text}>{voteAverate}</Text>
