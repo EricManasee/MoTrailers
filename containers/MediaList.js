@@ -10,7 +10,7 @@ const { width, height } = Dimensions.get('window')
 const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(80)
-const movieHeight = getHeightSizeByPercentage(88)
+const movieHeight = getHeightSizeByPercentage(86)
 
 class MediaList extends Component {
   state = {
@@ -99,7 +99,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   titleWrapper: {
-    height: 60,
+    position: 'relative',
+    bottom: 10,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 0,

@@ -10,7 +10,7 @@ class Category extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#eb8900', justifyContent: 'center' }}>
+                <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#ffffff', justifyContent: 'center' }}>
                     <Image source={this.props.imageUri}
                         style={{
                             // flex: 1,

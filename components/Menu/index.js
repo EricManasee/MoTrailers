@@ -36,7 +36,7 @@ Menu.defaultProps = {
 
 Menu.propTypes = {
   itens: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    // title: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
     tmdbUrl: PropTypes.string.isRequired,
     icon: PropTypes.number.isRequired,
@@ -46,9 +46,9 @@ Menu.propTypes = {
 
 const styles = StyleSheet.create({
   menuItem: {
-    width: 100, 
-    height: 100, 
-    backgroundColor: 'black',
+    width: 60, 
+    height: 60, 
+    backgroundColor: '#000000',
     padding: 8,
     flexDirection: 'column',
     justifyContent: 'space-between', 
@@ -56,22 +56,33 @@ const styles = StyleSheet.create({
   },
   menuSeparator: {
     width: 10,
-    height: 100
+    height: 60,
+    // backgroundColor: 'red',
   },
   menuItemIcon: {
-    width: 30,
-    height: 30
+    display: 'flex',
+    // flex: 2/4,
+    width: 24,
+    height: 24,
+    // justifyContent: 'center',
+    position: 'relative',
+    left: 10,
+    paddingBottom: 10,
+    padding: 10,
   },
   menuItemText: {
     color: 'white',
-    fontSize: 14,
-    width: 70 
+    fontSize: 12,
+    width: 65 
   },
   menuView: {
-    height: 100,
+    height: 60,
     position: 'absolute',
     bottom: 0,
-    left: 0
+    marginBottom: 5,
+    left: 10,
+    justifyContent: 'center',
+    flexDirection: 'column-reverse',
   }
 })
 export default Menu;

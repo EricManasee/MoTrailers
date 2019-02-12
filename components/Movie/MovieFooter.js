@@ -10,7 +10,7 @@ const MovieFooter = ({ voteAverate, releaseYear, title }) => {
   return (
     <View style={styles.footer}>
       <View style={styles.footerItem}>
-        <Ionicons name="md-star" size={32} color={iconAndTextColor} style={styles.icon} />
+        <Ionicons name="md-videocam" size={32} color={iconAndTextColor} style={styles.icon} />
         <Text style={styles.text}>MediaList</Text>
       </View>
       <View style={styles.footerItem}>
@@ -41,8 +41,10 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
-    paddingBottom: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
     backgroundColor: '#eb8900',
   },
   footerItem: {

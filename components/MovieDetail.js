@@ -60,15 +60,15 @@ export default class MovieDetail extends PureComponent {
         width: 1000,
         backgroundColor: '#eb8900'
       }} */}
-      
       />
-
+      <View>
         <TouchableOpacity
           onPress={goBack}>
           <Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
         </TouchableOpacity>
-       
+      </View>
       </ImageBackground>
+      
     )
   }
 
@@ -87,7 +87,6 @@ export default class MovieDetail extends PureComponent {
         <View style={styles.movieContentWrapper}>
         <People/>
           <Text style={styles.movieContentTitle}>{title}</Text>
-          {/* <MovieFooter voteAverate={2017} releaseYear={'date'} /> */}
           <Text
             textBreakStrategy='highQuality'
             style={styles.movieContent}>
@@ -118,6 +117,11 @@ MovieDetail.defaultProps = {
 }
 
 const styles = StyleSheet.create({
+  movieIcon:{
+	display: 'flex',
+	position: 'absolute',
+	paddingLeft: 20,
+  },
   movieContent: {
     textAlign: 'justify',
     color: '#F1FFF4',
@@ -134,7 +138,8 @@ const styles = StyleSheet.create({
   },
   videoPlayer: {
     flex: 1,
-    height: 210
+    height: 210,
+    marginBottom: 60,
   },
   movieView: {
     flex: 1,
@@ -147,8 +152,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 15,
     paddingTop: 10,
-  },
-  MovieFooter: {
-    color: 'blue'
   }
 });
