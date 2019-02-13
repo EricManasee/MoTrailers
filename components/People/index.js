@@ -26,6 +26,8 @@ export default class People extends PureComponent {
     }
 
     render() {
+    const { credits } = this.props;
+    console.log('credits ',credits);
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{ flex: 1 }}>

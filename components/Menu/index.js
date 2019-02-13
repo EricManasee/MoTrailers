@@ -57,13 +57,11 @@ const styles = StyleSheet.create({
   menuSeparator: {
     width: 10,
     height: 60,
-    // backgroundColor: 'red',
   },
   menuItemIcon: {
     display: 'flex',
-    // flex: 2/4,
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
     // justifyContent: 'center',
     position: 'relative',
     left: 10,

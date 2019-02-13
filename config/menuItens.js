@@ -9,7 +9,7 @@ const menuItens = [{
     title: "Playing",
     path: "now_playing",
     tmdbUrl: `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
-    icon: require('../assets/icons/theather.png'),
+    icon: require('../assets/icons/iconNowPlaying.png'),
   },
   {
     title: "Top Rated",
