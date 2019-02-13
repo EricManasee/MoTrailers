@@ -17,7 +17,6 @@ import { Category } from '../../components';
 const { height, width } = Dimensions.get('window')
 
 export default class People extends PureComponent {
-
     componentWillMount() {
         this.startHeaderHeight = 80
         if (Platform.OS == 'android') {
@@ -25,24 +24,43 @@ export default class People extends PureComponent {
         }
     }
 
+    buildPeople(credits) {
+        if (credits && credits.cast) {
+            console.log('credits.cast ', credits.cast);
+            // const base = {
+			// 	uri: `https://image.tmdb.org/t/p/w500/${profile_path}`,
+			// } ;
+            const people = credits.cast.map((castItem) => {
+                return <Category
+                    key={`${castItem.name}_${castItem.order}`}
+                    // imageUri={require(`${base}${castItem.profile_path}`)}
+                    // imageUri={require(`https://image.tmdb.org/t/p/w500/${profile_path}`)}
+                    name={castItem.name}
+                    style={{ color: 'white' }}
+                />
+            });
+            return people;
+        }
+        return null;
+    }
+
     render() {
-    const { credits } = this.props;
-    console.log('credits ',credits);
+        const { credits } = this.props;
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{ flex: 1 }}>
-                    
+
                     <ScrollView
                         scrollEventThrottle={16}
                     >
-                        <View style={{ flex: 1, position: 'relative', top: 0 , paddingTop: 0}}>
-                            <Text style={{ 
-                                fontSize: 24, 
-                                fontWeight: '400', 
-                                paddingHorizontal: 20, 
-                                color: 'white', 
+                        <View style={{ flex: 1, position: 'relative', top: 0, paddingTop: 0 }}>
+                            <Text style={{
+                                fontSize: 24,
+                                fontWeight: '400',
+                                paddingHorizontal: 20,
+                                color: 'white',
                                 textAlign: 'center'
-                                }}>
+                            }}>
                                 Movie casts.
                             </Text>
 
@@ -51,25 +69,11 @@ export default class People extends PureComponent {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../../assets/images/PersonPic-1.jpg')}
-                                        name="Name"
-                                    style={{ color: 'white'}}
-                                    />
-                                    <Category imageUri={require('../../assets/images/PersonPic-2.jpg')}
-                                        name="Name"
-                                    />
-                                    <Category imageUri={require('../../assets/images/PersonPic-3.jpg')}
-                                        name="Name"
-                                    />
-                                    <Category imageUri={require('../../assets/images/PersonPic-4.jpg')}
-                                        name="Name"
-                                    />
-                                    <Category imageUri={require('../../assets/images/PersonPic-2.jpg')}
-                                        name="Name"
-                                    />
+                                    {this.buildPeople(credits)}
+
                                 </ScrollView>
                             </View>
-                            
+
                         </View>
                     </ScrollView>
 
