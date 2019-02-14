@@ -8,10 +8,11 @@ import {
 
 class Category extends Component {
     render() {
+        const CastName= this.props.name
         return (
-            <View style={styles.container}>
+            <View style={styles.container} >
                 <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#ffffff', justifyContent: 'center' }}>
-                    <Image source={this.props.imageUri}
+                    <Image source={{uri: this.props.imageUri}}
                         style={{
                             // flex: 1,
                             left: 2,

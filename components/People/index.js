@@ -26,14 +26,14 @@ export default class People extends PureComponent {
 
     buildPeople(credits) {
         if (credits && credits.cast) {
-            console.log('credits.cast ', credits.cast);
-            // const base = {
-			// 	uri: `https://image.tmdb.org/t/p/w500/${profile_path}`,
-			// } ;
+			console.log('credits.cast ', credits.cast);
+            const base = `https://image.tmdb.org/t/p/w500/`;
             const people = credits.cast.map((castItem) => {
+				let imageURL = castItem.profile_path === null ? 'https://image.tmdb.org/t/p/w500/AhX2E9R1l4I8xgCwS1z3i6KoPX9.jpg' : `${base}${castItem.profile_path}`;
+				console.log(imageURL);
                 return <Category
                     key={`${castItem.name}_${castItem.order}`}
-                    // imageUri={require(`${base}${castItem.profile_path}`)}
+                    imageUri={imageURL}
                     // imageUri={require(`https://image.tmdb.org/t/p/w500/${profile_path}`)}
                     name={castItem.name}
                     style={{ color: 'white' }}
