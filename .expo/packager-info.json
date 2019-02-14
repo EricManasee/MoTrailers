@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 54056,
-  "expoServerNgrokUrl": "https://g2-4ij.anonymous.motrailers.exp.direct",
-  "packagerNgrokUrl": "https://packager.g2-4ij.anonymous.motrailers.exp.direct",
-  "ngrokPid": 63336
+  "packagerPort": 19004,
+  "packagerPid": 62261,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
