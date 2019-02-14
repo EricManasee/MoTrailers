@@ -64,7 +64,7 @@ export default class People extends PureComponent {
                                 Movie casts.
                             </Text>
 
-                            <View style={{ height: 120, marginTop: 10 }}>
+                            <View style={{ height: 200, marginTop: 10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}

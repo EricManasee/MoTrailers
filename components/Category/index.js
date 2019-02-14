@@ -11,7 +11,8 @@ class Category extends Component {
         const CastName= this.props.name
         return (
             <View style={styles.container} >
-                <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#ffffff', justifyContent: 'center' }}>
+                {/* <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#ffffff', justifyContent: 'center' }}> */}
+                <View style={{ width: 84, height: 84, backgroundColor:'#ffffff', justifyContent: 'center' }}>
                     <Image source={{uri: this.props.imageUri}}
                         style={{
                             // flex: 1,
@@ -21,12 +22,13 @@ class Category extends Component {
                             resizeMode: 'cover',
                             borderRadius: 40,
                             justifyContent: 'center',
+                            flexDirection: 'row',
                             
                         }}
                     />
                 </View>
-                <View style={{ paddingBottom: 5, paddingTop: 5 }}>
-                    <Text style={{ color: '#ffffff', textAlign: 'center' }}
+                <View style={{ paddingBottom: 0, paddingTop: 5, }}>
+                    <Text style={{  color: '#ffffff', textAlign: 'center', width: 100 }}
                     >{this.props.name}</Text>
                 </View>
             </View>
