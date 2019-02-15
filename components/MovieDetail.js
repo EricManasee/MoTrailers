@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
 	TouchableOpacity,
+	TouchableWithoutFeedback,
 	View,
 	Text,
 	ImageBackground,
@@ -60,19 +61,12 @@ export default class MovieDetail extends PureComponent {
 				}}
 				style={styles.movieImage}
 			>
-				{/* <MovieFooter 
-      voteAverate={2017} 
-      releaseYear={'date'} 
-      style={{
-        width: 1000,
-        backgroundColor: '#eb8900'
-      }} */}
 				/>
-      <View>
-					<TouchableOpacity
+				<View>
+					<TouchableWithoutFeedback
 						onPress={goBack}>
 						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
-					</TouchableOpacity>
+					</TouchableWithoutFeedback>
 				</View>
 			</ImageBackground>
 

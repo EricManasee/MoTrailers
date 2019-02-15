@@ -29,7 +29,9 @@ export default class People extends PureComponent {
 			console.log('credits.cast ', credits.cast);
             const base = `https://image.tmdb.org/t/p/w500/`;
             const people = credits.cast.map((castItem) => {
-				let imageURL = castItem.profile_path === null ? 'https://image.tmdb.org/t/p/w500/AhX2E9R1l4I8xgCwS1z3i6KoPX9.jpg' : `${base}${castItem.profile_path}`;
+                let imageURL = castItem.profile_path === null ? 'https://image.tmdb.org/t/p/w500/AhX2E9R1l4I8xgCwS1z3i6KoPX9.jpg' : `${base}${castItem.profile_path}`;
+                // let imageURL = castItem.profile_path === null ? require('../../assets/images/PersonNoPic.png') : `${base}${castItem.profile_path}`;
+                
 				console.log(imageURL);
                 return <Category
                     key={`${castItem.name}_${castItem.order}`}
@@ -64,7 +66,7 @@ export default class People extends PureComponent {
                                 Movie casts.
                             </Text>
 
-                            <View style={{ height: 200, marginTop: 10 }}>
+                            <View style={{ height: 160, marginTop: 10 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
