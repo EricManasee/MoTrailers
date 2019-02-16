@@ -11,6 +11,8 @@ const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(80)
 const movieHeight = getHeightSizeByPercentage(86)
+// const movieWidth = getWidthSizeByPercentage(80)
+// const movieHeight = getHeightSizeByPercentage(86)
 
 class MediaList extends Component {
   state = {

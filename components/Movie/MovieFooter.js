@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
 import MediaList, { Movie } from '../../components'
 
 const iconAndTextColor = '#ededed';
+const { width, height } = Dimensions.get('window')
+
+const getWidthSizeByPercentage = percentage => (percentage / 100) * width
+const getHeightSizeByPercentage = percentage => (percentage / 100) * height
+const footerTitleWidth = getWidthSizeByPercentage(50)
+const footerTitleHeight = getHeightSizeByPercentage(86)
+const footereWidth = getWidthSizeByPercentage(96)
+const footerHeight = getHeightSizeByPercentage(86)
 
 const MovieFooter = ({ voteAverate, releaseYear, title }) => {
   return (
@@ -37,7 +45,7 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 0,
-    width: 360,
+    width: footereWidth,
     alignContent: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -59,7 +67,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: iconAndTextColor,
-    width: 160,
+    width: footerTitleWidth,
     fontWeight: 'bold',
   }
 })

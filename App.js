@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-	StyleSheet, 
-	View, 
-	FlatList, 
-	Modal, 
-	Text, 
-	ImageBackground
- } from 'react-native';
+import {
+	StyleSheet,
+	View,
+	FlatList,
+	Modal,
+	Text,
+	ImageBackground,
+	StatusBar
+} from 'react-native';
 import { Constants } from 'expo';
 import { MovieDetail, Menu, Loading } from './components';
 import People from './components/People';
@@ -54,10 +55,13 @@ export default class App extends React.Component {
 					}} />
 					{this.getMediaList()}
 					<Modal
-						animationType="fade"
-						transparent={true}
+						style={{ backgroundColor: 'black' }}
+						animationType="slide"
+						// transparent={true}
 						visible={this.state.modalVisible}
 						onRequestClose={() => this.setState({ modalVisible: false })}>
+						<StatusBar backgroundColor="blue" barStyle="default" />
+						<StatusBar hidden={MovieDetail.statusBarHidden} />
 						<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
 					</Modal>
 				</View>
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
 	item: {
 		width: 150,
 		height: 200,
-		padding: 4, 
+		padding: 6,
 		// need shadow
 	},
 	Bgcontainer: {
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
 	overlayContainer: {
 		flex: 1,
 		paddingTop: Constants.statusBarHeight,
-		backgroundColor: '#000000',
-		// backgroundColor: 'rgba(0, 0, 0, 0.73)',
+		// backgroundColor: '#000000',
+		backgroundColor: 'rgba(0, 0, 0, 0.73)',
 	},
 });

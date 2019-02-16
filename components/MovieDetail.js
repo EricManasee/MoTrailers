@@ -77,7 +77,7 @@ export default class MovieDetail extends PureComponent {
 		const { movie, credits } = this.state;
 		const {
 			title,
-			overview, // adding movie footer, still not appearing
+			overview,
 		} = movie;
 		return (
 			<ScrollView style={styles.movieView}
