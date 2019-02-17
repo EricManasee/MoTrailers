@@ -30,7 +30,7 @@ export default class People extends PureComponent {
             const base = `https://image.tmdb.org/t/p/w500/`;
             const PersonNoPic = require('../../assets/images/PersonNoPic.png');
             const people = credits.cast.map((castItem) => {
-                let imageURL = castItem.profile_path === null ? 'https://image.tmdb.org/t/p/w500/AhX2E9R1l4I8xgCwS1z3i6KoPX9.jpg' : `${base}${castItem.profile_path}`;
+                let imageURL = castItem.profile_path === null ? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' : `${base}${castItem.profile_path}`;
                 // let imageURL = castItem.profile_path === null ? Source={PersonNoPic} : `${base}${castItem.profile_path}`;
                 
 				console.log(imageURL);

@@ -9,6 +9,7 @@ import {
 	StyleSheet,
 	ScrollView,
 	WebView,
+	ListView
 } from 'react-native';
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
@@ -62,12 +63,18 @@ export default class MovieDetail extends PureComponent {
 				style={styles.movieImage}
 			>
 				/>
-				<View>
+
+				<ScrollView
+				
+				alwaysBounceVertical={true}>
+				
+					{/* <Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} /> */}
 					<TouchableWithoutFeedback
-						onPress={goBack}>
+						onPress={goBack}
+						>
 						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
 					</TouchableWithoutFeedback>
-				</View>
+				</ScrollView>
 			</ImageBackground>
 
 		)
@@ -86,7 +93,7 @@ export default class MovieDetail extends PureComponent {
 			>
 				{this.renderHeader()}
 				<View style={styles.movieContentWrapper}>
-					<People credits={credits}/>
+					<People credits={credits} />
 					<Text style={styles.movieContentTitle}>{title}</Text>
 					<Text
 						textBreakStrategy='highQuality'

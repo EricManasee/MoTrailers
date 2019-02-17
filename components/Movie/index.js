@@ -8,9 +8,9 @@ const { width, height } = Dimensions.get('window')
 const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(96)
-const movieHeight = getHeightSizeByPercentage(81)
+const movieHeight = getHeightSizeByPercentage(61)
 const PosterWidth = getWidthSizeByPercentage(96)
-const PosterHeight = getHeightSizeByPercentage(80)
+const PosterHeight = getHeightSizeByPercentage(60)
 
 
 export default class Movie extends PureComponent {
