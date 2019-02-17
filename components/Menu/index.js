@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
   },
   menuView: {
-    // flex: 1,
+    flex: 1,
     height: 60,
     position: 'absolute',
     bottom: 0,
@@ -89,10 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // flexDirection: 'column-reverse',
     alignContent: 'flex-end',
-
   },
-  title:{
-      color: 'red',
-  }
+  
 })
 export default Menu;

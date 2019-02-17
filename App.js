@@ -6,8 +6,12 @@ import {
 	Modal,
 	Text,
 	ImageBackground,
-	StatusBar
+	StatusBar,
+	Button,
+	ScrollView
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { Constants } from 'expo';
 import { MovieDetail, Menu, Loading } from './components';
 import People from './components/People';
@@ -49,21 +53,34 @@ export default class App extends React.Component {
 				source={require('./assets/bg/movie-poster-full.jpg')}
 				style={styles.Bgcontainer}>
 				<View style={styles.overlayContainer}>
-					<Menu itens={menuItens} onPress={(item) => {
+					{/* <Menu itens={menuItens} onPress={(item) => {
 						console.log('selecting', item)
 						this.setState({ selectMediaItem: item })
-					}} />
+					}} /> */}
+
 					{this.getMediaList()}
 					<Modal
 						style={{ backgroundColor: 'black' }}
 						animationType="slide"
-						// transparent={true}
+						transparent={true}
 						visible={this.state.modalVisible}
 						onRequestClose={() => this.setState({ modalVisible: false })}>
 						<StatusBar backgroundColor="blue" barStyle="default" />
 						<StatusBar hidden={MovieDetail.statusBarHidden} />
 						<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
 					</Modal>
+					
+
+					{/* adding a TabNavigator */}
+					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'rgba(0, 0, 0, 0.80)'}}>
+					<Menu itens={menuItens} onPress={(item) => {
+						console.log('selecting', item)
+						this.setState({ selectMediaItem: item })
+					}} />
+					</View>
+
+
+
 				</View>
 			</ImageBackground>
 		);
@@ -75,7 +92,6 @@ const styles = StyleSheet.create({
 		width: 150,
 		height: 200,
 		padding: 6,
-		// need shadow
 	},
 	Bgcontainer: {
 		flex: 1,
@@ -83,7 +99,7 @@ const styles = StyleSheet.create({
 	overlayContainer: {
 		flex: 1,
 		paddingTop: Constants.statusBarHeight,
-		// backgroundColor: '#000000',
-		backgroundColor: 'rgba(0, 0, 0, 0.73)',
+		backgroundColor: '#000000',
+		// backgroundColor: 'rgba(0, 0, 0, 0.73)',
 	},
 });
