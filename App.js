@@ -20,8 +20,9 @@ import { MediaList } from './containers';
 
 
 export default class App extends React.Component {
+	
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	state = {
@@ -34,6 +35,7 @@ export default class App extends React.Component {
 	getMediaList() {
 		const { path, title, tmdbUrl } = this.state.selectMediaItem;
 		return (tmdbUrl && title) ? (
+
 			<MediaList title={title} key={title} tmdbUrl={tmdbUrl} goToDetail={this.goToDetail} />
 		)
 			: null;
@@ -69,14 +71,14 @@ export default class App extends React.Component {
 						<StatusBar hidden={MovieDetail.statusBarHidden} />
 						<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
 					</Modal>
-					
+
 
 					{/* adding a TabNavigator */}
-					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'rgba(0, 0, 0, 0.80)'}}>
-					<Menu itens={menuItens} onPress={(item) => {
-						console.log('selecting', item)
-						this.setState({ selectMediaItem: item })
-					}} />
+					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.80)' }}>
+						<Menu itens={menuItens} onPress={(item) => {
+							console.log('selecting', item)
+							this.setState({ selectMediaItem: item })
+						}} />
 					</View>
 
 

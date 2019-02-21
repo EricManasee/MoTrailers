@@ -26,17 +26,22 @@ export default class MovieDetail extends PureComponent {
 
 	componentWillMount() {
 		const { id: movieId } = this.props;
+		if (this.state.movie === null){		
 		fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
 			.then(response => response.json())
 			.then(movie => this.setState({
 				movie,
 			}));
+		};
 
-		fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
+		if (this.state.credits === null){
+			fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
 			.then(response => response.json())
 			.then(credits => this.setState({
 				credits,
 			}));
+		}
+		
 	}
 
 	renderYoutubeTrailer() {
@@ -64,17 +69,15 @@ export default class MovieDetail extends PureComponent {
 			>
 				/>
 
-				<ScrollView
-				
-				alwaysBounceVertical={true}>
-				
-					{/* <Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} /> */}
-					<TouchableWithoutFeedback
+				<TouchableWithoutFeedback
 						onPress={goBack}
-						>
+						style={{
+							position:'absolute',
+							top:15,//change it as per your need
+							left:15 // same as above
+						   }}>
 						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
 					</TouchableWithoutFeedback>
-				</ScrollView>
 			</ImageBackground>
 
 		)

@@ -21,7 +21,7 @@ const Menu = ({ itens, onPress }) => {
       <FlatList
         keyExtractor={(item) => `${item.title}`}
         data={itens}
-        showsHorizontalScrollIndicator={false}
+        // showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
         ItemSeparatorComponent={MenuSeparator}
         horizontal
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
   },
   menuItemIcon: {
     display: 'flex',
-    width: 36,
-    height: 36,
+    width: 30,
+    height: 30,
     justifyContent: 'center',
     position: 'relative',
     // left: 10,

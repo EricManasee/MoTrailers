@@ -6,12 +6,12 @@ import { StyleSheet, View, FlatList, Text, Dimensions, ScrollView } from 'react-
 
 
 const menuItens = [
-  // {
-  //   title: "Playing",
-  //   path: "now_playing",
-  //   tmdbUrl: `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
-  //   icon: require('../assets/icons/iconNowPlaying.png'),
-  // },
+  {
+    title: "Playing",
+    path: "now_playing",
+    tmdbUrl: `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
+    icon: require('../assets/icons/iconNowPlaying.png'),
+  },
   {
     title: "Popular",
     path: "dasas",
@@ -22,7 +22,7 @@ const menuItens = [
     title: "Upcoming",
     path: "dasas",
     tmdbUrl: `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`,
-    icon: require('../assets/icons/iconNowPlaying.png')
+    icon: require('../assets/icons/upcoming.png')
   },
   {
     title: "Top Rated",
@@ -30,18 +30,18 @@ const menuItens = [
     tmdbUrl: `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`,
     icon: require('../assets/icons/rate.png')
   },
-  {
-    title: "Trailer",
-    path: "dasas",
-    tmdbUrl: `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`,
-    icon: require('../assets/icons/rate.png')
-  },
-  {
-    title: "Tv Show",
-    path: "dasas",
-    tmdbUrl: `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`,
-    icon: require('../assets/icons/television.png')
-  }
+  //{
+  //   title: "Trailer",
+  //   path: "dasas",
+  //   tmdbUrl: `https://api.themoviedb.org/3/tv/latest?api_key=${apiKey}`,
+  //   icon: require('../assets/icons/rate.png')
+  // },
+  // {
+  //   title: "Tv Show",
+  //   path: "dasas",
+  //   tmdbUrl: `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`,
+  //   icon: require('../assets/icons/television.png')
+  // }
 ]
 
 // const styles = StyleSheet.create({

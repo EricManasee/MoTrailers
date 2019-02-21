@@ -3,5 +3,9 @@
     "sdkVersion": "27.0.0",
     "name": "MoTrailers",
     "icon": "assets/images/logo.png"
+  },
+  "splash": {
+    "image": "assets/images/splash.png",
+    "backgroundColor": "#FEF9B0"
   }
 }

@@ -11,7 +11,6 @@ class Category extends Component {
         const CastName= this.props.name
         return (
             <View style={styles.container} >
-                {/* <View style={{ width: 84, height: 84, borderRadius:40, backgroundColor:'#ffffff', justifyContent: 'center' }}> */}
                 <View style={{ width: 84, height: 84, backgroundColor:'#000000', justifyContent: 'center' }}>
                     <Image source={{uri: this.props.imageUri}}
                         style={{

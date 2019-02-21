@@ -27,13 +27,15 @@ class MediaList extends Component {
   }
 
   fetcthItems = (page = 1) => {
-    fetch(`${this.props.tmdbUrl}&page=${page}`)
+    // if (this.state.response === null){
+      fetch(`${this.props.tmdbUrl}&page=${page}`)
       .then(response => response.json())
       .then(({ results }) => results.map(media => ({...media, key: uuidv1()})))
       .then(results => this.setState({
         results: [...this.state.results, ...results],
         page,
       }));
+    // }
   }
 
   renderMovie = ({ item: movie }) => {
