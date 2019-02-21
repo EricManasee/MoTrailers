@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 
 const MenuItem = ({ item, onPress }) => {
@@ -21,9 +21,8 @@ const Menu = ({ itens, onPress }) => {
       <FlatList
         keyExtractor={(item) => `${item.title}`}
         data={itens}
-        // showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
-        ItemSeparatorComponent={MenuSeparator}
+        // ItemSeparatorComponent={MenuSeparator}
         horizontal
       />
     </View>
@@ -55,8 +54,9 @@ const styles = StyleSheet.create({
   //   borderRadius: 5,
   // },
   menuSeparator: {
-    width: 10,
+    width: 20,
     height: 60,
+    
   },
   menuItemIcon: {
     display: 'flex',
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'center',
     position: 'relative',
-    // left: 10,
-    paddingBottom: 10,
+    left: 5,
+    marginBottom: 5,
     padding: 10,
   },
   menuItemText: {
@@ -78,17 +78,17 @@ const styles = StyleSheet.create({
   menuItem:{
     flex: 1,
     justifyContent: 'center', 
+    marginLeft: 20
   },
   menuView: {
     flex: 1,
     height: 60,
     position: 'absolute',
     bottom: 0,
-    // marginBottom: 1,
-    left: 15,
+    marginBottom: 10,
+    left: 0,
     justifyContent: 'space-between',
-    // flexDirection: 'column-reverse',
-    alignContent: 'flex-end',
+    marginLeft: 10,
   },
   
 })
