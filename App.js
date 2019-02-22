@@ -74,7 +74,13 @@ export default class App extends React.Component {
 
 
 					{/* adding a TabNavigator */}
-					<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.80)' }}>
+					<View style={{ 
+						flex: 1, 
+						justifyContent: 'center', 
+						alignItems: 'center', 
+						backgroundColor: '#454545',
+						 
+						}}>
 						<Menu itens={menuItens} onPress={(item) => {
 							console.log('selecting', item)
 							this.setState({ selectMediaItem: item })
@@ -90,11 +96,11 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	item: {
-		width: 150,
-		height: 200,
-		padding: 6,
-	},
+	// item: {
+	// 	width: 150,
+	// 	height: 200,
+	// 	padding: 6,
+	//},
 	Bgcontainer: {
 		flex: 1,
 	},
