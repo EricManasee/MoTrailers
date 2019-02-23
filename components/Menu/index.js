@@ -1,6 +1,15 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
+
+
+const { width, height } = Dimensions.get('window')
+
+const getWidthSizeByPercentage = percentage => (percentage / 100) * width
+const getHeightSizeByPercentage = percentage => (percentage / 100) * height
+const menuWidth = getWidthSizeByPercentage(100)
+const menuHeight = getHeightSizeByPercentage(61)
+
 
 const MenuItem = ({ item, onPress }) => {
   const { icon, title } = item
@@ -83,6 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     left: 0,
     justifyContent: 'center',
+    width: menuWidth,
     // marginLeft: 14,
   },
   
