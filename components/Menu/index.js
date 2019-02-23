@@ -22,7 +22,6 @@ const Menu = ({ itens, onPress }) => {
         keyExtractor={(item) => `${item.title}`}
         data={itens}
         renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
-        // ItemSeparatorComponent={MenuSeparator}
         horizontal
       />
     </View>
@@ -53,11 +52,7 @@ const styles = StyleSheet.create({
   //   justifyContent: 'space-between', 
   //   borderRadius: 5,
   // },
-  menuSeparator: {
-    width: 20,
-    height: 60,
-    
-  },
+  
   menuItemIcon: {
     display: 'flex',
     width: 30,
@@ -88,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     left: 0,
     justifyContent: 'space-between',
-    marginLeft: 20,
+    marginLeft: 2,
   },
   
 })
