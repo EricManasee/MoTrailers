@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 
 const MenuItem = ({ item, onPress }) => {
@@ -21,9 +21,8 @@ const Menu = ({ itens, onPress }) => {
       <FlatList
         keyExtractor={(item) => `${item.title}`}
         data={itens}
-        showsHorizontalScrollIndicator={false}
         renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
-        ItemSeparatorComponent={MenuSeparator}
+        // ItemSeparatorComponent={MenuSeparator}
         horizontal
       />
     </View>
@@ -36,7 +35,7 @@ Menu.defaultProps = {
 
 Menu.propTypes = {
   itens: PropTypes.arrayOf(PropTypes.shape({
-    // title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
     tmdbUrl: PropTypes.string.isRequired,
     icon: PropTypes.number.isRequired,
@@ -45,42 +44,52 @@ Menu.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  menuItem: {
-    width: 60, 
-    height: 60, 
-    backgroundColor: '#000000',
-    padding: 8,
-    flexDirection: 'column',
-    justifyContent: 'space-between', 
-    borderRadius: 5,
-  },
+  // menuItem: {
+  //   width: 60, 
+  //   height: 60, 
+  //   backgroundColor: '#cfcfcf',
+  //   padding: 8,
+  //   flexDirection: 'column',
+  //   justifyContent: 'space-between', 
+  //   borderRadius: 5,
+  // },
   menuSeparator: {
-    width: 10,
+    width: 20,
     height: 60,
+    
   },
   menuItemIcon: {
     display: 'flex',
     width: 30,
     height: 30,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     position: 'relative',
-    left: 10,
-    paddingBottom: 10,
+    left: 5,
+    marginBottom: 5,
     padding: 10,
   },
   menuItemText: {
+    textAlign: 'justify',
     color: 'white',
     fontSize: 12,
-    width: 65 
+    width: 65,
+    height: 20 
+  },
+  menuItem:{
+    flex: 1,
+    justifyContent: 'center', 
+    marginLeft: 20
   },
   menuView: {
+    flex: 1,
     height: 60,
     position: 'absolute',
     bottom: 0,
-    marginBottom: 5,
-    left: 10,
-    justifyContent: 'center',
-    flexDirection: 'column-reverse',
-  }
+    marginBottom: 2,
+    left: 0,
+    justifyContent: 'space-between',
+    marginLeft: 10,
+  },
+  
 })
 export default Menu;

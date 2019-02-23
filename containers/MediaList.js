@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View, FlatList, Text, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Dimensions, ScrollView, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 import { Movie } from '../components';
 import People from '../components/People';
@@ -11,6 +11,8 @@ const getWidthSizeByPercentage = percentage => (percentage / 100) * width
 const getHeightSizeByPercentage = percentage => (percentage / 100) * height
 const movieWidth = getWidthSizeByPercentage(80)
 const movieHeight = getHeightSizeByPercentage(86)
+// const movieWidth = getWidthSizeByPercentage(80)
+// const movieHeight = getHeightSizeByPercentage(86)
 
 class MediaList extends Component {
   state = {
@@ -25,13 +27,15 @@ class MediaList extends Component {
   }
 
   fetcthItems = (page = 1) => {
-    fetch(`${this.props.tmdbUrl}&page=${page}`)
+    // if (this.state.response === null){
+      fetch(`${this.props.tmdbUrl}&page=${page}`)
       .then(response => response.json())
       .then(({ results }) => results.map(media => ({...media, key: uuidv1()})))
       .then(results => this.setState({
         results: [...this.state.results, ...results],
         page,
       }));
+    // }
   }
 
   renderMovie = ({ item: movie }) => {
@@ -52,11 +56,14 @@ class MediaList extends Component {
   render () {
     const { title } = this.props;
     return (
+      
+    
       <Fragment>
         
         <View style={styles.listWrapper}>
-        {/* <People style={styles.People}/> */}
         <View style={styles.titleWrapper}>
+        <StatusBar backgroundColor="white" barStyle="light-content" />
+        <StatusBar hidden={title.statusBarHidden} />
             <Text style={styles.title}> { title }
             </Text>
         </View>
@@ -93,7 +100,7 @@ const styles = StyleSheet.create({
   height: 10, },
   title: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '600',
     width: 200,
     color: 'white',
     textAlign: 'center',
@@ -101,10 +108,10 @@ const styles = StyleSheet.create({
   titleWrapper: {
     position: 'relative',
     bottom: 10,
-    height: 40,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 0,
+    paddingTop: 20,
     paddingBottom: 0,
   },
   listWrapper: { 

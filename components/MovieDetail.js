@@ -2,12 +2,14 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
 	TouchableOpacity,
+	TouchableWithoutFeedback,
 	View,
 	Text,
 	ImageBackground,
 	StyleSheet,
 	ScrollView,
 	WebView,
+	ListView
 } from 'react-native';
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
@@ -24,17 +26,22 @@ export default class MovieDetail extends PureComponent {
 
 	componentWillMount() {
 		const { id: movieId } = this.props;
+		if (this.state.movie === null){		
 		fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
 			.then(response => response.json())
 			.then(movie => this.setState({
 				movie,
 			}));
+		};
 
-		fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
+		if (this.state.credits === null){
+			fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
 			.then(response => response.json())
 			.then(credits => this.setState({
 				credits,
 			}));
+		}
+		
 	}
 
 	renderYoutubeTrailer() {
@@ -54,28 +61,27 @@ export default class MovieDetail extends PureComponent {
 		const { backdrop_path } = this.state.movie
 
 		return (
+			<View>
 			<ImageBackground
 				source={{
 					uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
 				}}
 				style={styles.movieImage}
 			>
-				{/* <MovieFooter 
-      voteAverate={2017} 
-      releaseYear={'date'} 
-      style={{
-        width: 1000,
-        backgroundColor: '#eb8900'
-      }} */}
 				/>
-      <View>
-					<TouchableOpacity
-						onPress={goBack}>
-						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
-					</TouchableOpacity>
-				</View>
-			</ImageBackground>
 
+				
+			</ImageBackground>
+			<TouchableWithoutFeedback
+			onPress={goBack}
+			style={{
+				position:'absolute',
+				top:150,//change it as per your need
+				left:150 // same as above
+			   }}>
+			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
+		</TouchableWithoutFeedback>
+		</View>
 		)
 	}
 
@@ -83,7 +89,7 @@ export default class MovieDetail extends PureComponent {
 		const { movie, credits } = this.state;
 		const {
 			title,
-			overview, // adding movie footer, still not appearing
+			overview,
 		} = movie;
 		return (
 			<ScrollView style={styles.movieView}
@@ -92,7 +98,7 @@ export default class MovieDetail extends PureComponent {
 			>
 				{this.renderHeader()}
 				<View style={styles.movieContentWrapper}>
-					<People credits={credits}/>
+					<People credits={credits} />
 					<Text style={styles.movieContentTitle}>{title}</Text>
 					<Text
 						textBreakStrategy='highQuality'
