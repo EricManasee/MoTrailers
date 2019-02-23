@@ -61,6 +61,7 @@ export default class MovieDetail extends PureComponent {
 		const { backdrop_path } = this.state.movie
 
 		return (
+			<View>
 			<ImageBackground
 				source={{
 					uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
@@ -69,17 +70,18 @@ export default class MovieDetail extends PureComponent {
 			>
 				/>
 
-				<TouchableWithoutFeedback
-						onPress={goBack}
-						style={{
-							position:'absolute',
-							top:15,//change it as per your need
-							left:15 // same as above
-						   }}>
-						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
-					</TouchableWithoutFeedback>
+				
 			</ImageBackground>
-
+			<TouchableWithoutFeedback
+			onPress={goBack}
+			style={{
+				position:'absolute',
+				top:150,//change it as per your need
+				left:150 // same as above
+			   }}>
+			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
+		</TouchableWithoutFeedback>
+		</View>
 		)
 	}
 
