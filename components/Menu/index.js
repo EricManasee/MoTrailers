@@ -80,19 +80,24 @@ const styles = StyleSheet.create({
     height: 20 
   },
   menuItem:{
-    flex: 1,
-    justifyContent: 'center', 
-    marginLeft: 14
+    // flex: 1,
+    justifyContent: 'flex-end', 
+    marginRight: 16,
+    // backgroundColor: 'red'
   },
   menuView: {
     flex: 1,
     height: 60,
+    paddingRight: 10,
+    paddingLeft: 10,
     position: 'absolute',
     bottom: 0,
+    top: 8,
     marginBottom: 0,
     left: 0,
     justifyContent: 'center',
     width: menuWidth,
+    // backgroundColor: 'black'
     // marginLeft: 14,
   },
   
