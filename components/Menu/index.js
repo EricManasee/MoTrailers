@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     marginBottom: 0,
     left: 0,
-    justifyContent: 'space-between',
-    marginLeft: 2,
+    justifyContent: 'center',
+    // marginLeft: 14,
   },
   
 })
