@@ -70,9 +70,7 @@ export default class MovieDetail extends PureComponent {
 			>
 				/>
 
-				
-			</ImageBackground>
-			<TouchableWithoutFeedback
+				<TouchableWithoutFeedback
 			onPress={goBack}
 			style={{
 				position:'absolute',
@@ -81,6 +79,7 @@ export default class MovieDetail extends PureComponent {
 			   }}>
 			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
 		</TouchableWithoutFeedback>
+			</ImageBackground>
 		</View>
 		)
 	}

@@ -78,17 +78,17 @@ const styles = StyleSheet.create({
   menuItem:{
     flex: 1,
     justifyContent: 'center', 
-    marginLeft: 20
+    marginLeft: 14
   },
   menuView: {
     flex: 1,
     height: 60,
     position: 'absolute',
     bottom: 0,
-    marginBottom: 2,
+    marginBottom: 0,
     left: 0,
     justifyContent: 'space-between',
-    marginLeft: 10,
+    marginLeft: 20,
   },
   
 })

@@ -5,7 +5,6 @@
     "icon": "assets/images/logo.png"
   },
   "splash": {
-    "image": "assets/images/splash.png",
-    "backgroundColor": "#FEF9B0"
+    "image": "assets/images/splash.png"
   }
 }
