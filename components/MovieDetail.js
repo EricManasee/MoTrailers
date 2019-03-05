@@ -9,7 +9,7 @@ import {
 	StyleSheet,
 	ScrollView,
 	WebView,
-	ListView
+	Image
 } from 'react-native';
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
@@ -17,11 +17,13 @@ import { Video } from 'expo';
 import People from './People';
 import MovieFooter from '../components/Movie/MovieFooter';
 
-
+const loadingImage = require('../assets/images/splash.png');
 export default class MovieDetail extends PureComponent {
 	state = {
 		movie: null,
 		credits: null,
+		MovieDetailIsLoaded: false,
+		MovieCreditsIsLoaded: false,
 	}
 
 	componentWillMount() {
@@ -31,6 +33,7 @@ export default class MovieDetail extends PureComponent {
 			.then(response => response.json())
 			.then(movie => this.setState({
 				movie,
+				MovieDetailIsLoaded: true,
 			}));
 		};
 
@@ -39,7 +42,14 @@ export default class MovieDetail extends PureComponent {
 			.then(response => response.json())
 			.then(credits => this.setState({
 				credits,
+				MovieCreditsIsLoaded: true,
 			}));
+		}
+		const { isLoaded } = this.state;
+		if (!isLoaded) {
+			setTimeout(() => {
+				this.setState({ isLoaded: true })
+			},3000);
 		}
 		
 	}
@@ -66,16 +76,14 @@ export default class MovieDetail extends PureComponent {
 				source={{
 					uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
 				}}
-				style={styles.movieImage}
-			>
-				/>
+				style={styles.movieImage}>
 
 				<TouchableWithoutFeedback
 			onPress={goBack}
 			style={{
 				position:'absolute',
-				top:150,//change it as per your need
-				left:150 // same as above
+				top:150,
+				left:150 
 			   }}>
 			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
 		</TouchableWithoutFeedback>
@@ -90,11 +98,24 @@ export default class MovieDetail extends PureComponent {
 			title,
 			overview,
 		} = movie;
-		return (
-			<ScrollView style={styles.movieView}
-			// vertical={true}
-
-			>
+		const { MovieCreditsIsLoaded, MovieDetailIsLoaded } = this.state;
+		// if (!MovieCreditsIsLoaded && !MovieDetailIsLoaded) {
+		// 	return (
+		// 		<View>
+		// 			<Image source={loadingImage} />
+		// 		</View>
+		// 	)
+		// }
+		if (!MovieCreditsIsLoaded && MovieDetailIsLoaded ) {
+			return (
+				<View>
+					<Image source={loadingImage} />
+				</View>
+			)
+		}
+		else {
+		 return (
+			<ScrollView style={styles.movieView}>
 				{this.renderHeader()}
 				<View style={styles.movieContentWrapper}>
 					<People credits={credits} />
@@ -108,6 +129,7 @@ export default class MovieDetail extends PureComponent {
 				</View>
 			</ScrollView>
 		)
+	}
 	}
 
 	render() {

@@ -16,24 +16,25 @@ const MenuItem = ({ item, onPress }) => {
   return (
     <TouchableOpacity onPress={() => onPress(item)}>
       <View style={styles.menuItem} >
-        <Image source={icon}  style={styles.menuItemIcon}/>
+        <Image source={icon} style={styles.menuItemIcon} />
         <Text style={styles.menuItemText}>{title}</Text>
       </View>
     </TouchableOpacity>
   )
 }
 
-const MenuSeparator = () =>( <View style={styles.menuSeparator} />)
+const MenuSeparator = () => (<View style={styles.menuSeparator} />)
 const Menu = ({ itens, onPress }) => {
   return (
-    <View style={styles.menuView}>
-      <FlatList
-        keyExtractor={(item) => `${item.title}`}
-        data={itens}
-        renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
-        horizontal
-      />
-    </View>
+    // <View style={styles.menuView}>
+    <FlatList
+      style={styles.menuView}
+      keyExtractor={(item) => `${item.title}`}
+      data={itens}
+      renderItem={({ item }) => <MenuItem item={item} onPress={onPress} />}
+      horizontal
+    />
+    // </View>
   )
 }
 
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   //   justifyContent: 'space-between', 
   //   borderRadius: 5,
   // },
-  
+
   menuItemIcon: {
     display: 'flex',
     width: 30,
@@ -77,29 +78,28 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 12,
     width: 65,
-    height: 20 
+    height: 20
   },
-  menuItem:{
+  menuItem: {
     // flex: 1,
-    justifyContent: 'flex-end', 
-    marginRight: 16,
+    // marginRight: 16,
     // backgroundColor: 'red'
   },
   menuView: {
-    flex: 1,
+    // flex: 1,
     height: 60,
-    paddingRight: 10,
-    paddingLeft: 10,
-    position: 'absolute',
+    marginRight: 10,
+    // marginLeft: 10,
+    // position: 'absolute',
     bottom: 0,
-    top: 8,
+    top: 10,
     marginBottom: 0,
     left: 0,
-    justifyContent: 'center',
+    // justifyContent: 'space-between',
     width: menuWidth,
     // backgroundColor: 'black'
     // marginLeft: 14,
   },
-  
+
 })
 export default Menu;
