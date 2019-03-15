@@ -62,28 +62,29 @@ const styles = StyleSheet.create({
   //   justifyContent: 'space-between', 
   //   borderRadius: 5,
   // },
-
+  menuItem: {
+    flex: 1,
+    marginRight: 16,
+    backgroundColor: 'red'
+    
+  },
   menuItemIcon: {
-    display: 'flex',
     width: 30,
     height: 30,
-    justifyContent: 'center',
-    position: 'relative',
-    left: 5,
-    marginBottom: 5,
-    padding: 10,
+    // justifyContent: '',
+    // position: 'relative',
+    // left: 5,
+    // marginBottom: 5,
+    // padding: 10,
   },
   menuItemText: {
-    textAlign: 'justify',
+    // textAlign: 'justify',
+    position: 'relative',
     color: 'white',
     fontSize: 12,
+    fontWeight: 'bold',
     width: 65,
     height: 20
-  },
-  menuItem: {
-    // flex: 1,
-    // marginRight: 16,
-    // backgroundColor: 'red'
   },
   menuView: {
     // flex: 1,

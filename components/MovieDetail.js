@@ -45,12 +45,7 @@ export default class MovieDetail extends PureComponent {
 				MovieCreditsIsLoaded: true,
 			}));
 		}
-		const { isLoaded } = this.state;
-		if (!isLoaded) {
-			setTimeout(() => {
-				this.setState({ isLoaded: true })
-			},3000);
-		}
+		
 		
 	}
 

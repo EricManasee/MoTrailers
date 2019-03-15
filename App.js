@@ -122,11 +122,6 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	// item: {
-	// 	width: 150,
-	// 	height: 200,
-	// 	padding: 6,
-	//},
 	Bgcontainer: {
 		flex: 1,
 	},

@@ -44,11 +44,5 @@ const menuItens = [
   // }
 ]
 
-// const styles = StyleSheet.create({
-//   title: {
-//     color: 'blue',
-//   fontSize: 30
-//   }
-// })
 
 export default menuItens;
