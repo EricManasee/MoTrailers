@@ -9,7 +9,7 @@ import {
 	StyleSheet,
 	ScrollView,
 	WebView,
-	Image
+	Image, StatusBar
 } from 'react-native';
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
@@ -28,25 +28,25 @@ export default class MovieDetail extends PureComponent {
 
 	componentWillMount() {
 		const { id: movieId } = this.props;
-		if (this.state.movie === null){		
-		fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
-			.then(response => response.json())
-			.then(movie => this.setState({
-				movie,
-				MovieDetailIsLoaded: true,
-			}));
+		if (this.state.movie === null) {
+			fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
+				.then(response => response.json())
+				.then(movie => this.setState({
+					movie,
+					MovieDetailIsLoaded: true,
+				}));
 		};
 
-		if (this.state.credits === null){
+		if (this.state.credits === null) {
 			fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
-			.then(response => response.json())
-			.then(credits => this.setState({
-				credits,
-				MovieCreditsIsLoaded: true,
-			}));
+				.then(response => response.json())
+				.then(credits => this.setState({
+					credits,
+					MovieCreditsIsLoaded: true,
+				}));
 		}
-		
-		
+
+
 	}
 
 	renderYoutubeTrailer() {
@@ -66,24 +66,26 @@ export default class MovieDetail extends PureComponent {
 		const { backdrop_path } = this.state.movie
 
 		return (
-			<View>
-			<ImageBackground
-				source={{
-					uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
-				}}
-				style={styles.movieImage}>
+			<View style={{ backgroundColor: 'black' }}>
+				<StatusBar backgroundColor="white" barStyle="dark-content" />
 
-				<TouchableWithoutFeedback
-			onPress={goBack}
-			style={{
-				position:'absolute',
-				top:150,
-				left:150 
-			   }}>
-			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
-		</TouchableWithoutFeedback>
-			</ImageBackground>
-		</View>
+				<ImageBackground
+					source={{
+						uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
+					}}
+					style={styles.movieImage}>
+
+					<TouchableWithoutFeedback
+						onPress={goBack}
+						style={{
+							position: 'absolute',
+							top: 150,
+							left: 150
+						}}>
+						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
+					</TouchableWithoutFeedback>
+				</ImageBackground>
+			</View>
 		)
 	}
 
@@ -94,14 +96,7 @@ export default class MovieDetail extends PureComponent {
 			overview,
 		} = movie;
 		const { MovieCreditsIsLoaded, MovieDetailIsLoaded } = this.state;
-		// if (!MovieCreditsIsLoaded && !MovieDetailIsLoaded) {
-		// 	return (
-		// 		<View>
-		// 			<Image source={loadingImage} />
-		// 		</View>
-		// 	)
-		// }
-		if (!MovieCreditsIsLoaded && MovieDetailIsLoaded ) {
+		if (!MovieCreditsIsLoaded && MovieDetailIsLoaded) {
 			return (
 				<View>
 					<Image source={loadingImage} />
@@ -109,22 +104,22 @@ export default class MovieDetail extends PureComponent {
 			)
 		}
 		else {
-		 return (
-			<ScrollView style={styles.movieView}>
-				{this.renderHeader()}
-				<View style={styles.movieContentWrapper}>
-					<People credits={credits} />
-					<Text style={styles.movieContentTitle}>{title}</Text>
-					<Text
-						textBreakStrategy='highQuality'
-						style={styles.movieContent}>
-						{overview}
-					</Text>
-					{this.renderYoutubeTrailer()}
-				</View>
-			</ScrollView>
-		)
-	}
+			return (
+				<ScrollView style={styles.movieView}>
+					{this.renderHeader()}
+					<View style={styles.movieContentWrapper}>
+						<People credits={credits} />
+						<Text style={styles.movieContentTitle}>{title}</Text>
+						<Text
+							textBreakStrategy='highQuality'
+							style={styles.movieContent}>
+							{overview}
+						</Text>
+						{this.renderYoutubeTrailer()}
+					</View>
+				</ScrollView>
+			)
+		}
 	}
 
 	render() {

@@ -95,10 +95,10 @@ export default class App extends React.Component {
 						<Modal
 							style={{ backgroundColor: 'black' }}
 							animationType="slide"
-							transparent={true}
+							transparent={false}
 							visible={this.state.modalVisible}
 							onRequestClose={() => this.setState({ modalVisible: false })}>
-							<StatusBar backgroundColor="blue" barStyle="default" />
+							<StatusBar backgroundColor="black" barStyle="default" />
 							<StatusBar hidden={MovieDetail.statusBarHidden} />
 							<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
 						</Modal>
