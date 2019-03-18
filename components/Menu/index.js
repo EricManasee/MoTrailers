@@ -1,31 +1,50 @@
 import React from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
+import { Container, Header, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import menuItens from '../../config/menuItens';
 
-const MenuItem = ({ item, onPress }) => {
-  const { icon, title } = item
-  return (
-    <TouchableOpacity onPress={() => onPress(item)}>
-      <View style={styles.menuItem} >
-        <Image source={icon}  style={styles.menuItemIcon}/>
-        <Text style={styles.menuItemText}>{title}</Text>
-      </View>
-    </TouchableOpacity>
-  )
-}
 
-const MenuSeparator = () =>( <View style={styles.menuSeparator} />)
+const { width, height } = Dimensions.get('window')
+
+const getWidthSizeByPercentage = percentage => (percentage / 100) * width
+const getHeightSizeByPercentage = percentage => (percentage / 100) * height
+const menuWidth = getWidthSizeByPercentage(100)
+const menuHeight = getHeightSizeByPercentage(61)
+
+
+// const MenuItem = ({ item, onPress }) => {
+//   const { icon, title } = item
+//   return (
+//     <TouchableOpacity onPress={() => onPress(item)}>
+//       <View style={styles.menuItem} >
+//         <Image source={icon} style={styles.menuItemIcon} />
+//         <Text style={styles.menuItemText}>{title}</Text>
+//       </View>
+//     </TouchableOpacity>
+//   )
+// }
+
+const MenuSeparator = () => (<View style={styles.menuSeparator} />)
 const Menu = ({ itens, onPress }) => {
   return (
-    <View style={styles.menuView}>
-      <FlatList
-        keyExtractor={(item) => `${item.title}`}
-        data={itens}
-        renderItem={({item}) => <MenuItem  item={item} onPress={onPress}/>}
-        // ItemSeparatorComponent={MenuSeparator}
-        horizontal
-      />
-    </View>
+    <Container >
+      <Header />
+      <Content />
+      <Footer >
+        <FooterTab style={{ backgroundColor: 'black', marginBottom: -18, }}>
+          {
+            itens.map((item, index) => {
+              return <Button key={index} vertical onPress={() => onPress(item)}>
+                <Image source={item.icon} style={styles.menuItemIcon} />
+                <Text style={styles.menuItemText}
+                >{item.title}</Text>
+              </Button>;
+            })
+          }
+        </FooterTab>
+      </Footer>
+    </Container>
   )
 }
 
@@ -44,51 +63,17 @@ Menu.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  // menuItem: {
-  //   width: 60, 
-  //   height: 60, 
-  //   backgroundColor: '#cfcfcf',
-  //   padding: 8,
-  //   flexDirection: 'column',
-  //   justifyContent: 'space-between', 
-  //   borderRadius: 5,
-  // },
-  menuSeparator: {
-    width: 20,
-    height: 60,
-    
-  },
+
+
   menuItemIcon: {
-    display: 'flex',
     width: 30,
     height: 30,
-    justifyContent: 'center',
-    position: 'relative',
-    left: 5,
-    marginBottom: 5,
-    padding: 10,
+
   },
   menuItemText: {
-    textAlign: 'justify',
-    color: 'white',
-    fontSize: 12,
-    width: 65,
-    height: 20 
-  },
-  menuItem:{
-    flex: 1,
-    justifyContent: 'center', 
-    marginLeft: 20
-  },
-  menuView: {
-    flex: 1,
-    height: 60,
-    position: 'absolute',
-    bottom: 0,
-    marginBottom: 2,
-    left: 0,
-    justifyContent: 'space-between',
-    marginLeft: 10,
+    color: "#fff", 
+    fontSize: 12, 
+    marginTop: 3
   },
   
 })

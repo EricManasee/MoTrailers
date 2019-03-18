@@ -9,7 +9,7 @@ import {
 	StyleSheet,
 	ScrollView,
 	WebView,
-	ListView
+	Image, StatusBar
 } from 'react-native';
 import MovieMock from '../mock/MovieDetail.json';
 import { Ionicons } from '@expo/vector-icons';
@@ -17,31 +17,36 @@ import { Video } from 'expo';
 import People from './People';
 import MovieFooter from '../components/Movie/MovieFooter';
 
-
+const loadingImage = require('../assets/images/splash.png');
 export default class MovieDetail extends PureComponent {
 	state = {
 		movie: null,
 		credits: null,
+		MovieDetailIsLoaded: false,
+		MovieCreditsIsLoaded: false,
 	}
 
 	componentWillMount() {
 		const { id: movieId } = this.props;
-		if (this.state.movie === null){		
-		fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
-			.then(response => response.json())
-			.then(movie => this.setState({
-				movie,
-			}));
+		if (this.state.movie === null) {
+			fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=d86d5ce95a86d3cd615899d27f869506&append_to_response=videos`)
+				.then(response => response.json())
+				.then(movie => this.setState({
+					movie,
+					MovieDetailIsLoaded: true,
+				}));
 		};
 
-		if (this.state.credits === null){
+		if (this.state.credits === null) {
 			fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=d86d5ce95a86d3cd615899d27f869506`)
-			.then(response => response.json())
-			.then(credits => this.setState({
-				credits,
-			}));
+				.then(response => response.json())
+				.then(credits => this.setState({
+					credits,
+					MovieCreditsIsLoaded: true,
+				}));
 		}
-		
+
+
 	}
 
 	renderYoutubeTrailer() {
@@ -61,27 +66,26 @@ export default class MovieDetail extends PureComponent {
 		const { backdrop_path } = this.state.movie
 
 		return (
-			<View>
-			<ImageBackground
-				source={{
-					uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
-				}}
-				style={styles.movieImage}
-			>
-				/>
+			<View style={{ backgroundColor: 'black' }}>
+				<StatusBar backgroundColor="white" barStyle="dark-content" />
 
-				
-			</ImageBackground>
-			<TouchableWithoutFeedback
-			onPress={goBack}
-			style={{
-				position:'absolute',
-				top:150,//change it as per your need
-				left:150 // same as above
-			   }}>
-			<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
-		</TouchableWithoutFeedback>
-		</View>
+				<ImageBackground
+					source={{
+						uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`,
+					}}
+					style={styles.movieImage}>
+
+					<TouchableWithoutFeedback
+						onPress={goBack}
+						style={{
+							position: 'absolute',
+							top: 150,
+							left: 150
+						}}>
+						<Ionicons name="ios-arrow-dropleft-circle" size={50} color="#eb8900" style={styles.icon} />
+					</TouchableWithoutFeedback>
+				</ImageBackground>
+			</View>
 		)
 	}
 
@@ -91,24 +95,31 @@ export default class MovieDetail extends PureComponent {
 			title,
 			overview,
 		} = movie;
-		return (
-			<ScrollView style={styles.movieView}
-			// vertical={true}
-
-			>
-				{this.renderHeader()}
-				<View style={styles.movieContentWrapper}>
-					<People credits={credits} />
-					<Text style={styles.movieContentTitle}>{title}</Text>
-					<Text
-						textBreakStrategy='highQuality'
-						style={styles.movieContent}>
-						{overview}
-					</Text>
-					{this.renderYoutubeTrailer()}
+		const { MovieCreditsIsLoaded, MovieDetailIsLoaded } = this.state;
+		if (!MovieCreditsIsLoaded && MovieDetailIsLoaded) {
+			return (
+				<View>
+					<Image source={loadingImage} />
 				</View>
-			</ScrollView>
-		)
+			)
+		}
+		else {
+			return (
+				<ScrollView style={styles.movieView}>
+					{this.renderHeader()}
+					<View style={styles.movieContentWrapper}>
+						<People credits={credits} />
+						<Text style={styles.movieContentTitle}>{title}</Text>
+						<Text
+							textBreakStrategy='highQuality'
+							style={styles.movieContent}>
+							{overview}
+						</Text>
+						{this.renderYoutubeTrailer()}
+					</View>
+				</ScrollView>
+			)
+		}
 	}
 
 	render() {

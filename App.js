@@ -7,8 +7,7 @@ import {
 	Text,
 	ImageBackground,
 	StatusBar,
-	Button,
-	ScrollView
+	Image
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
@@ -17,10 +16,22 @@ import { MovieDetail, Menu, Loading } from './components';
 import People from './components/People';
 import menuItens from './config/menuItens';
 import { MediaList } from './containers';
+import SplashScreen from 'react-native-splash-screen';
+const loadingImage = require('./assets/images/splash.png');
 
 
 export default class App extends React.Component {
-	
+	componentDidMount() {
+		// do stuff while splash screen is shown
+		// After having done stuff (such as async tasks) hide the splash screen
+		const { isLoaded } = this.state;
+		if (!isLoaded) {
+			setTimeout(() => {
+				this.setState({ isLoaded: true })
+			}, 3000);
+		}
+	}
+
 	constructor(props) {
 		super(props);
 	}
@@ -30,7 +41,19 @@ export default class App extends React.Component {
 		movieId: 19404,
 		tmdbUrl: 'https://api.themoviedb.org/3/movie/550?api_key=d86d5ce95a86d3cd615899d27f869506',
 		selectMediaItem: menuItens[0],
+		isLoaded: false,
 	};
+
+	componentDidMount() {
+		// do stuff while splash screen is shown
+		// After having done stuff (such as async tasks) hide the splash screen
+		const { isLoaded } = this.state;
+		if (!isLoaded) {
+			setTimeout(() => {
+				this.setState({ isLoaded: true })
+			},);
+		}
+	}
 
 	getMediaList() {
 		const { path, title, tmdbUrl } = this.state.selectMediaItem;
@@ -49,58 +72,56 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const { selectMediaItem } = this.state
-		return (
-			<ImageBackground
-				source={require('./assets/bg/movie-poster-full.jpg')}
-				style={styles.Bgcontainer}>
-				<View style={styles.overlayContainer}>
-					{/* <Menu itens={menuItens} onPress={(item) => {
+		const { selectMediaItem, isLoaded } = this.state
+		if (!isLoaded) {
+			return (
+				<View>
+					<Image source={loadingImage} />
+				</View>
+			)
+		}
+		else {
+			return (
+				<ImageBackground
+					source={require('./assets/bg/movie-poster-full.jpg')}
+					style={styles.Bgcontainer}>
+					<View style={styles.overlayContainer}>
+						{/* <Menu itens={menuItens} onPress={(item) => {
 						console.log('selecting', item)
 						this.setState({ selectMediaItem: item })
 					}} /> */}
 
-					{this.getMediaList()}
-					<Modal
-						style={{ backgroundColor: 'black' }}
-						animationType="slide"
-						transparent={true}
-						visible={this.state.modalVisible}
-						onRequestClose={() => this.setState({ modalVisible: false })}>
-						<StatusBar backgroundColor="blue" barStyle="default" />
-						<StatusBar hidden={MovieDetail.statusBarHidden} />
-						<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
-					</Modal>
+						{this.getMediaList()}
+						<Modal
+							style={{ backgroundColor: 'black' }}
+							animationType="slide"
+							transparent={false}
+							visible={this.state.modalVisible}
+							onRequestClose={() => this.setState({ modalVisible: false })}>
+							<StatusBar backgroundColor="black" barStyle="default" />
+							<StatusBar hidden={MovieDetail.statusBarHidden} />
+							<MovieDetail id={this.state.movieId} goBack={() => this.setState({ modalVisible: false })} />
+						</Modal>
 
 
-					{/* adding a TabNavigator */}
-					<View style={{ 
-						flex: 1, 
-						justifyContent: 'center', 
-						alignItems: 'center', 
-						backgroundColor: '#454545',
-						 
-						}}>
-						<Menu itens={menuItens} onPress={(item) => {
-							console.log('selecting', item)
-							this.setState({ selectMediaItem: item })
-						}} />
+						{/* adding a TabNavigator */}
+						<View>
+							<Menu itens={menuItens} onPress={(item) => {
+								console.log('selecting', item)
+								this.setState({ selectMediaItem: item })
+							}} />
+						</View>
+
+
+
 					</View>
-
-
-
-				</View>
-			</ImageBackground>
-		);
+				</ImageBackground>
+			);
+		}
 	}
 }
 
 const styles = StyleSheet.create({
-	// item: {
-	// 	width: 150,
-	// 	height: 200,
-	// 	padding: 6,
-	//},
 	Bgcontainer: {
 		flex: 1,
 	},
