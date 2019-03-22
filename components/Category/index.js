@@ -14,7 +14,7 @@ class Category extends Component {
                 <View style={{ width: 84, height: 84, backgroundColor:'#000000', justifyContent: 'center' }}>
                     <Image source={{uri: this.props.imageUri}}
                         style={{
-                            // flex: 1,
+                            flex: 1,
                             left: 2,
                             width: 80,
                             height: 80,

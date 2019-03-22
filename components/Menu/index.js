@@ -35,7 +35,7 @@ const Menu = ({ itens, onPress }) => {
         <FooterTab style={{ backgroundColor: 'black', marginBottom: -18, }}>
           {
             itens.map((item, index) => {
-              return <Button key={index} vertical onPress={() => onPress(item)}>
+              return <Button key={index} vertical onPress={() => onPress(item)} style={{ marginBottom: 8}}>
                 <Image source={item.icon} style={styles.menuItemIcon} />
                 <Text style={styles.menuItemText}
                 >{item.title}</Text>

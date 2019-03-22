@@ -95,7 +95,7 @@ export default class App extends React.Component {
 						<Modal
 							style={{ backgroundColor: 'black' }}
 							animationType="slide"
-							transparent={false}
+							transparent={true}
 							visible={this.state.modalVisible}
 							onRequestClose={() => this.setState({ modalVisible: false })}>
 							<StatusBar backgroundColor="black" barStyle="default" />
