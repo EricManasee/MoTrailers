@@ -67,7 +67,7 @@ export default class MovieDetail extends PureComponent {
 
 		return (
 			<View style={{ backgroundColor: 'black' }}>
-				<StatusBar backgroundColor="white" barStyle="dark-content" />
+				<StatusBar backgroundColor="white" barStyle="light-content" />
 
 				<ImageBackground
 					source={{
