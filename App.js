@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { Constants } from 'expo';
+// import { Constants } from 'expo';
+import Constants from 'expo-constants';
 import { MovieDetail, Menu, Loading } from './components';
 import People from './components/People';
 import menuItens from './config/menuItens';
